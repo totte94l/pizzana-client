@@ -2,8 +2,8 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <button class="btn btn-success">Lägg till ny rätt</button>
-          <NewMenyItem />
+          <button class="btn btn-success" v-on:click="fnShowAddNewItem">{{ showAddNewItemBtnText }}</button>
+          <NewMenyItem v-if="showAddNewItem" />
         </div>
 
       </div>
@@ -24,6 +24,25 @@ export default {
   components: {
     MenyList,
     NewMenyItem
+  },
+  data () {
+    return {
+      showAddNewItem: false
+    }
+  },
+  methods: {
+    fnShowAddNewItem () {
+      this.showAddNewItem = !this.showAddNewItem
+    }
+  },
+  computed: {
+    showAddNewItemBtnText () {
+      if (this.showAddNewItem) {
+        return 'Dölj'
+      } else {
+        return 'Lägg till ny rätt'
+      }
+    }
   }
 }
 </script>
