@@ -2,7 +2,6 @@
     <div class="container">
         <h1 class="mb-2">Din meny</h1>
         <div id="menuItems" class="row justify-content-center">
-                        {{ count }}
             <div class="mb-3 col-8 menu-item" v-for="item in menu" :key="item.id">
                 <!-- Edit menu item view -->
                 <template v-if="editingItem && item.id == editingItemId">

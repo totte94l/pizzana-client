@@ -55,9 +55,18 @@ export default {
   },
   methods: {
     async addItem () {
-      await MenyService.SetMenu().then(function (response) {
-        console.log(response)
-      })
+      const data = {
+        name: this.name,
+        ingredients: this.ingredients,
+        category: 'Kategori',
+        glutenFree: this.glutenFree,
+        lactoseFree: this.lactoseFree,
+        price: this.price
+      }
+
+      const response = await MenyService.addItem(data)
+
+      this.msg = response.msg
     }
   }
 }
