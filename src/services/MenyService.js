@@ -20,7 +20,17 @@ export default {
     console.log(data)
     const vm = this
     return axios
-      .delete(url + 'delete-item/', { data: { data } } )
+      .delete(url + 'delete-item/', { data: { data } })
+      .then(function (response) {
+        vm.SetMenu()
+        return response.data
+      })
+  },
+  addItem (data) {
+    const vm = this
+    console.log(data)
+    return axios
+      .post(url + 'add-item', { data: { data } })
       .then(function (response) {
         vm.SetMenu()
         return response.data
