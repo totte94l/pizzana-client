@@ -11,13 +11,16 @@ export default {
         store.dispatch('set_menu', response.data.menu)
       })
   },
-  editMenu (data) {
+  editItem (data) {
+    const vm = this
     return axios
       .put(url + 'edit-item/', data)
-      .then(response => response.data)
+      .then(function (response) {
+        vm.SetMenu()
+        return response.data
+      })
   },
   deleteItem (data) {
-    console.log(data)
     const vm = this
     return axios
       .delete(url + 'delete-item/', { data: { data } })
@@ -28,7 +31,6 @@ export default {
   },
   addItem (data) {
     const vm = this
-    console.log(data)
     return axios
       .post(url + 'add-item', { data: { data } })
       .then(function (response) {
