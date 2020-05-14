@@ -35,17 +35,30 @@
                 <!-- Regular menu item view -->
                 <template v-else>
                     <h1><span>{{ item.id }}. </span>{{ item.name }}<span class="float-right secondary_color">{{ item.price }}kr</span></h1>
+
+                    <div v-if="item.glutenFree " class="mt-3 mb-3">
+                      <div class="free"></div>
+                        Glutenfri
+                      </div>
                     <div>
-                        <span class="font-weight-bold">Ingredienser:</span>
-                        <p>
-                            {{ item.ingredients }}
-                        </p>
-                        <div class="row align-self-center">
-                            <div class="col-12">
-                                <button class="btn btn-primary mr-2" v-on:click="startEdit(item)">Ändra</button>
-                                <button class="btn btn-danger" v-on:click="deleteItem(item.id)">Ta bort</button>
-                            </div>
-                        </div>
+
+                    <div v-if="item.lactoseFree" class="mt-3 mb-3">
+                      <div class="free"></div>
+                        Laktosfri
+                      </div>
+                    </div>
+
+                    <div>
+                      <span class="font-weight-bold">Ingredienser:</span>
+                      <p>
+                          {{ item.ingredients }}
+                      </p>
+                      <div class="row align-self-center">
+                          <div class="col-12">
+                              <button class="btn btn-primary mr-2" v-on:click="startEdit(item)">Ändra</button>
+                              <button class="btn btn-danger" v-on:click="deleteItem(item.id)">Ta bort</button>
+                          </div>
+                      </div>
                     </div>
                 </template>
             </div>
@@ -120,9 +133,6 @@ export default {
         const categorie = item.category
         categoriesList.indexOf(categorie) === -1 ? categoriesList.push(categorie) : console.log("finns redan!")
       })
-
-      console.log("New array: " + categoriesList)
-
       return categoriesList
     }
   }
@@ -146,5 +156,13 @@ export default {
     .cat-title {
       color: #444;
       border-bottom: 4px solid orange;
+    }
+
+    .free {
+      display: inline-block;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background-color: green;
     }
 </style>
