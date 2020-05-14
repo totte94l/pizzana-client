@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1 class="mb-2">Din meny</h1>
+        <h1 class="mb-2">Din meny</h1>HEJ {{ msg }}
         <div id="menuItems" class="row justify-content-center">
             <div class="mb-3 col-8 menu-item" v-for="item in menu" :key="item.id">
                 <!-- Edit menu item view -->
@@ -23,7 +23,8 @@
                         </p>
                         <div class="row align-self-center">
                             <div class="col-12">
-                                <button v-on:click="saveEdit(item)" class="btn btn-success mr-2">Spara</button>
+                                <button v-on:click="editItem(item)" class="btn btn-success mr-2">Spara</button>
+                                <button v-on:click="cancelEdit" class="btn btn-danger mr-2">Avbryt</button>
                             </div>
                         </div>
                     </div>
@@ -64,7 +65,8 @@ export default {
       editingItemId: 0,
       editName: '',
       editIngredients: '',
-      editPrice: 0
+      editPrice: 0,
+      msg: ''
     }
   },
   methods: {
@@ -78,6 +80,29 @@ export default {
       const response = await MenyService.deleteItem(data)
 
       this.msg = response.msg
+    },
+    startEdit (item) {
+      this.editingItem = true
+      this.editingItemId = item.id
+      this.editName = item.name
+      this.editIngredients = item.ingredients
+      this.editPrice = item.price
+    },
+    async editItem (item) {
+      const data = {
+        id: item.id,
+        name: this.editName,
+        ingredients: this.editIngredients,
+        price: this.editPrice
+      }
+
+      const response = await MenyService.editItem(data)
+
+      this.msg = response.msg
+      this.editingItem = false
+    },
+    cancelEdit () {
+      this.editingItem = false
     }
   },
   mounted: function () {
