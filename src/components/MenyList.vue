@@ -1,9 +1,11 @@
 <template>
     <div class="container">
-        <h1 class="mb-2">Din meny</h1>HEJ {{ msg }}
+        <h1 class="mb-2">Din meny</h1>
         <div id="menuItems" class="row justify-content-center">
-            <div class="mb-3 col-8 menu-item" v-for="item in menu" :key="item.id">
-                <!-- Edit menu item view -->
+          <div class="mb-3 col-12" v-for="(cat, index) in categories" :key="index">
+            <h1 class="mt-2 mb-3 cat-title">{{ cat }}</h1>
+            <div class="mb-3 col-12 menu-item" v-for="(item, index) in menu" :key="index" v-if="item.category == cat">
+              <!-- Edit menu item view -->
                 <template v-if="editingItem && item.id == editingItemId">
                     <div class="form-group row mb-0">
                         <div class="col-1">
@@ -45,9 +47,9 @@
                             </div>
                         </div>
                     </div>
-
                 </template>
             </div>
+          </div>
         </div>
     </div>
 </template>
@@ -65,8 +67,7 @@ export default {
       editingItemId: 0,
       editName: '',
       editIngredients: '',
-      editPrice: 0,
-      msg: ''
+      editPrice: 0
     }
   },
   methods: {
@@ -111,6 +112,18 @@ export default {
   computed: {
     menu () {
       return store.getters.menu
+    },
+    categories () {
+      const categoriesList = []
+
+      this.menu.forEach(function (item) {
+        const categorie = item.category
+        categoriesList.indexOf(categorie) === -1 ? categoriesList.push(categorie) : console.log("finns redan!")
+      })
+
+      console.log("New array: " + categoriesList)
+
+      return categoriesList
     }
   }
 }
@@ -128,5 +141,10 @@ export default {
 
     .secondary_color {
       color: rgba(32, 32, 32, 0.856);
+    }
+
+    .cat-title {
+      color: #444;
+      border-bottom: 4px solid orange;
     }
 </style>
