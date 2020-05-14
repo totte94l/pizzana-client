@@ -2,9 +2,13 @@
     <div class="container">
         <h1 class="mb-2">Din meny</h1>
         <div id="menuItems" class="row justify-content-center">
+
           <div class="mb-3 col-12" v-for="(cat, index) in categories" :key="index">
-            <h1 class="mt-2 mb-3 cat-title">{{ cat }}</h1>
+
+            <h1 class="mt-2 mb-4 cat-title">{{ cat }}</h1>
+
             <div class="mb-3 col-12 menu-item" v-for="(item, index) in menu" :key="index" v-if="item.category == cat">
+
               <!-- Edit menu item view -->
                 <template v-if="editingItem && item.id == editingItemId">
                     <div class="form-group row mb-0">
