@@ -11,16 +11,24 @@
             </div>
           </div>
           <div class="mt-2">
-            <span class="font-weight-bold">Ingredienser:</span>
-            <textarea class="form-control" v-model="ingredients"></textarea>
+
+            <div class="form-group">
+              <label for="txt_ingredients" class="font-weight-bold">Ingredienser:</label>
+              <textarea name="txt_ingredients" class="form-control" v-model="ingredients"></textarea>
+            </div>
+
+              <div class="form-group">
+              <label for="txt_ingredients" class="font-weight-bold">Kategori:</label>
+              <input type="text" placeholder="Kategori (Pizzor, Sallad..)" v-model="category" class="form-control">
+            </div>
 
             <div class="form-check mt-3">
-              <input type="checkbox" class="form-check-input" id="isGlutenFree" value="">
+              <input type="checkbox" class="form-check-input" id="isGlutenFree" v-model="glutenFree" value="">
               <label for="isGlutenFree" class="form-check-label">Glutenfri</label>
             </div>
 
             <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="isLactoseFree">
+              <input type="checkbox" class="form-check-input" v-model="lactoseFree" id="isLactoseFree">
               <label for="isLactoseFree" class="form-check-label">Laktosfri</label>
             </div>
 
@@ -50,7 +58,8 @@ export default {
       glutenFree: false,
       lactoseFree: false,
       msg: '',
-      menu: ''
+      menu: '',
+      category: ''
     }
   },
   methods: {
@@ -58,7 +67,7 @@ export default {
       const data = {
         name: this.name,
         ingredients: this.ingredients,
-        category: 'Kategori',
+        category: this.category,
         glutenFree: this.glutenFree,
         lactoseFree: this.lactoseFree,
         price: this.price
