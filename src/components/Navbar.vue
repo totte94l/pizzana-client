@@ -45,27 +45,26 @@
 
 <script>
 
-
 export default {
-    name: "Navbar",
+  name: 'Navbar',
 
-    data () {
-        return {
-            username: '',
-            password: '',
-            msg: ''
-        }
-    },
-    methods: {
-        
-    },
-    computed: {
-        isLoggedIn() {
-            return this.$store.getters.isLoggedIn
-        },
-        user() {
-            return this.$store.getters.getUser
-        }
+  data () {
+    return {
+      username: '',
+      password: '',
+      msg: ''
     }
+  },
+  methods: {
+
+  },
+  computed: {
+    isLoggedIn () {
+      return this.$store.getters.isLoggedIn
+    },
+    user () {
+      return this.$store.getters.getUser
+    }
+  }
 }
 </script>
