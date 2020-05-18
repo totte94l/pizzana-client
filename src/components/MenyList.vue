@@ -40,15 +40,15 @@
                 <template v-else>
                     <h1><span>{{ item.id }}. </span>{{ item.name }}<span class="float-right secondary_color">{{ item.price }}kr</span></h1>
 
-                    <div v-if="item.glutenFree " class="mt-3 mb-3">
-                      <div class="free"></div>
-                        Glutenfri
+                    <div v-if="item.glutenFree || item.lactoseFree " class="mt-3 mb-3 icon_holder">
+                      <div v-if="item.glutenFree " class="mt-3 mb-3">
+                        <img class="small-icon" src="../assets/gluten_free_icon.png">
+                        <span class="ml-2 small-icon-text">Glutenfri</span>
                       </div>
-                    <div>
 
-                    <div v-if="item.lactoseFree" class="mt-3 mb-3">
-                      <div class="free"></div>
-                        Laktosfri
+                      <div v-if="item.lactoseFree" class="mt-3 mb-3">
+                        <img class="small-icon" src="../assets/lactose_free_icon.png">
+                        <span class="ml-2 small-icon-text">Laktosfri</span>
                       </div>
                     </div>
 
@@ -143,7 +143,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     #menuItems {
         padding: 10px;
     }
@@ -162,11 +162,12 @@ export default {
       border-bottom: 4px solid orange;
     }
 
-    .free {
-      display: inline-block;
-      height: 20px;
-      width: 20px;
-      border-radius: 50%;
-      background-color: green;
+    .small-icon {
+      width: 25px;
+      height: 25px;
+    }
+
+    .small-icon-text {
+      
     }
 </style>
