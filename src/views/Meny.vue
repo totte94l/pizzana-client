@@ -2,8 +2,12 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <button class="btn btn-success" v-on:click="fnShowAddNewItem">{{ showAddNewItemBtnText }}</button>
-          <NewMenyItem v-if="showAddNewItem" />
+          <div class="col-12">
+            <button class="btn btn-success mb-3" v-on:click="fnShowAddNewItem">{{ showAddNewItemBtnText }}</button>
+            <slide-up-down :active="showAddNewItem" :duration="1000">
+              <NewMenyItem v-if="showAddNewItem" />
+            </slide-up-down>
+          </div>
         </div>
 
       </div>
@@ -19,11 +23,13 @@
 
 import MenyList from '../components/MenyList'
 import NewMenyItem from '../components/AddMenyItem'
+import SlideUpDown from 'vue-slide-up-down'
 
 export default {
   components: {
     MenyList,
-    NewMenyItem
+    NewMenyItem,
+    SlideUpDown
   },
   data () {
     return {

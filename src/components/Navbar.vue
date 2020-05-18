@@ -1,7 +1,7 @@
 <template>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light mb-3">
         <div class="container">
-            <a class="navbar-brand" href="#">Pizzana</a>
+            <a class="navbar-brand" href="#"><img class="logotype" src="../assets/logotype.png"></a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -11,16 +11,16 @@
                 <template v-if="isLoggedIn">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item mr-auto">
-                            <a class="nav-link" href="#">Restauranginformation</a>
+                            <routerLink to="/meny" class="nav-link">Min meny</routerLink>
                         </li>
                         <li class="nav-item mr-auto">
-                            <routerLink to="/meny" class="nav-link">Meny</routerLink>
+                            <a class="nav-link" href="#">Om Oss</a>
                         </li>
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mr-auto">
-                            <a class="nav-link" href="#">{{ user.username }}</a>
+                            <a class="nav-link" href="#"><i class="far fa-user-circle"></i> {{ user.username }}</a>
                         </li>
                         <li class="nav-item mr-auto">
                             <a class="nav-link" href="#">Logga ut</a>
@@ -68,3 +68,18 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+    .logotype {
+        width: 100px;
+    }
+
+    .navbar {
+        background: #420059;;
+    }
+
+    .nav-link {
+        font-size: 1.3em !important;
+        color: white !important;
+    }
+</style>
