@@ -53,7 +53,7 @@ export default {
   data () {
     return {
       name: '',
-      price: 0,
+      price: '',
       ingredients: '',
       glutenFree: false,
       lactoseFree: false,
