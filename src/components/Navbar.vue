@@ -23,7 +23,7 @@
                             <a class="nav-link" href="#"><i class="far fa-user-circle"></i> {{ user.username }}</a>
                         </li>
                         <li class="nav-item mr-auto">
-                            <a class="nav-link" href="#">Logga ut</a>
+                            <span class="nav-link" v-on:click="logout">Logga ut</span>
                         </li>
                     </ul>
                 </template>
@@ -56,7 +56,10 @@ export default {
     }
   },
   methods: {
-
+    logout () {
+      this.$store.dispatch('logout')
+      this.$router.push('/login')
+    }
   },
   computed: {
     isLoggedIn () {
@@ -70,10 +73,6 @@ export default {
 </script>
 
 <style scoped>
-    .logotype {
-        width: 100px;
-    }
-
     .navbar {
         background: #420059;;
     }
@@ -81,5 +80,10 @@ export default {
     .nav-link {
         font-size: 1.3em !important;
         color: white !important;
+    }
+
+    .nav-link:hover {
+        text-decoration: underline;
+        cursor: pointer;
     }
 </style>
