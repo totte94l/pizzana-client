@@ -1,5 +1,10 @@
 <template>
   <div class="container mt-3 mb-3" id="addNewItem">
+      <transition name="fade">
+        <Alert :type="alertType" v-if="addedNewItem">
+          {{ msg }}
+        </Alert>
+      </transition>
       <div class="row">
         <div class="col-12 mt-3">
           <div class="form-group row mb-0">
@@ -39,7 +44,6 @@
             </div>
           </div>
         </div>
-        {{ msg }}
       </div>
   </div>
 </template>
@@ -47,6 +51,7 @@
 <script>
 import MenyService from '../services/MenyService'
 import store from '../store/index'
+import Alert from '../components/Alert'
 
 export default {
   name: 'AddMenyItem',
@@ -59,8 +64,13 @@ export default {
       lactoseFree: false,
       msg: '',
       menu: '',
-      category: ''
+      category: '',
+      addedNewItem: false,
+      alertType: String
     }
+  },
+  components: {
+    Alert
   },
   methods: {
     async addItem () {
@@ -75,7 +85,22 @@ export default {
 
       const response = await MenyService.addItem(data)
 
+      if (response.success === 'true') {
+        this.alertType = 'success'
+      } else {
+        this.alertType = 'danger'
+      }
+      this.showAlert()
+
       this.msg = response.msg
+    },
+    showAlert () {
+      this.addedNewItem = true
+      const vm = this
+
+      setTimeout(function () {
+        vm.addedNewItem = false
+      }, 4000)
     }
   }
 }
@@ -85,6 +110,13 @@ export default {
   #addNewItem {
     border: 1px solid rgba(75, 75, 75, 0.322);
     padding: 20px;
-    border-radius: 10px;;
+    border-radius: 10px;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 1s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
   }
 </style>

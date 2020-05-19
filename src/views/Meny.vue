@@ -3,7 +3,7 @@
       <div class="row">
         <div class="col-12">
           <div class="col-12">
-            <button class="btn btn-success mb-3" v-on:click="fnShowAddNewItem">{{ showAddNewItemBtnText }}</button>
+            <button class="btn btn-success mb-3" v-on:click="fnShowAddNewItem" v-html="showAddNewItemBtnText"></button>
             <slide-up-down :active="showAddNewItem" :duration="1000">
               <NewMenyItem v-if="showAddNewItem" />
             </slide-up-down>
@@ -45,9 +45,9 @@ export default {
   computed: {
     showAddNewItemBtnText () {
       if (this.showAddNewItem) {
-        return 'Dölj'
+        return '<i class="fas fa-minus mr-2"></i>Dölj'
       } else {
-        return 'Lägg till ny rätt'
+        return '<i class="fas fa-plus mr-1"></i> Lägg till ny rätt'
       }
     }
   },

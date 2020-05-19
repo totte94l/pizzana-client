@@ -3,6 +3,12 @@
         <h1 class="mb-2">Din meny</h1>
         <div id="menuItems" class="row justify-content-center">
 
+          <transition name="fade">
+            <Alert :type="alertType" v-if="deletedItem" style="position: fixed; bottom: 50px; z-index: 999">
+              {{ msg }}
+            </Alert>
+          </transition>
+
           <div class="mb-3 col-12" v-for="(cat, index) in categories" :key="index">
 
             <h1 class="mt-2 mb-4 cat-title">{{ cat }}</h1>
@@ -13,7 +19,7 @@
                 <template v-if="editingItem && item.id == editingItemId">
                     <div class="form-group row mb-0">
                         <div class="col-1">
-                            <h1 class="">{{ item.id }}.</h1>
+                            <h1 class="">{{ index }}.</h1>
                         </div>
                         <div class="col-9">
                             <input type="text" class="form-control" v-model="editName">
@@ -22,6 +28,17 @@
                           <input type="text" v-model="editPrice" class="form-control">
                         </div>
                     </div>
+
+                    <div class="form-check mt-3">
+                      <input type="checkbox" class="form-check-input" id="isGlutenFree" v-model="glutenFree" value="">
+                      <label for="isGlutenFree" class="form-check-label">Glutenfri</label>
+                    </div>
+
+                    <div class="form-check mb-3">
+                      <input type="checkbox" class="form-check-input" v-model="lactoseFree" id="isLactoseFree">
+                      <label for="isLactoseFree" class="form-check-label">Laktosfri</label>
+                    </div>
+
                     <div>
                         <span class="font-weight-bold">Ingredienser:</span>
                         <p>
@@ -38,7 +55,7 @@
 
                 <!-- Regular menu item view -->
                 <template v-else>
-                    <h1><span>{{ item.id }}. </span>{{ item.name }}<span class="float-right secondary_color">{{ item.price }}kr</span></h1>
+                    <h1><span>{{ index + 1 }}. </span>{{ item.name }}<span class="float-right secondary_color">{{ item.price }}kr</span></h1>
 
                     <div v-if="item.glutenFree || item.lactoseFree " class="mt-3 mb-3 icon_holder">
                       <div v-if="item.glutenFree " class="mt-3 mb-3">
@@ -75,6 +92,7 @@
 
 import MenyService from '@/services/MenyService.js'
 import store from '../store/index'
+import Alert from '../components/Alert'
 
 export default {
   data () {
@@ -84,8 +102,15 @@ export default {
       editingItemId: 0,
       editName: '',
       editIngredients: '',
-      editPrice: 0
+      editPrice: 0,
+      glutenFree: false,
+      lactoseFree: false,
+      deletedItem: false,
+      alertType: String
     }
+  },
+  components: {
+    Alert
   },
   methods: {
     async setMenu () {
@@ -95,9 +120,24 @@ export default {
       const data = {
         id: id
       }
-      const response = await MenyService.deleteItem(data)
 
+      const response = await MenyService.deleteItem(data)
       this.msg = response.msg
+
+      if (response.success === 'true') {
+        this.alertType = 'success'
+      } else {
+        this.alertType = 'danger'
+      }
+      this.showAlert()
+    },
+    showAlert () {
+      this.deletedItem = true
+      const vm = this
+
+      setTimeout(function () {
+        vm.deletedItem = false
+      }, 4000)
     },
     startEdit (item) {
       this.editingItem = true
@@ -111,7 +151,9 @@ export default {
         id: item.id,
         name: this.editName,
         ingredients: this.editIngredients,
-        price: this.editPrice
+        price: this.editPrice,
+        glutenFree: this.glutenFree,
+        lactoseFree: this.lactoseFree
       }
 
       const response = await MenyService.editItem(data)
@@ -167,7 +209,11 @@ export default {
       height: 25px;
     }
 
-    .small-icon-text {
-      
+    .fade-enter-active, .fade-leave-active {
+      transition: opacity 1s;
+    }
+
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+      opacity: 0;
     }
 </style>
