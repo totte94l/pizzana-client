@@ -43,7 +43,7 @@ export default {
 
         this.$store.dispatch('login', { token, user })
 
-        this.$router.push('/')
+        this.$router.push('/meny')
       } catch (error) {
         this.msg = error.response.data.msg
       }

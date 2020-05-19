@@ -1,12 +1,14 @@
 <template>
-  <div>
-    <h1>Hi {{ username }}</h1>
+  <div class="container">
+    <h1>Hello {{ username }}</h1>
     <p>{{ secretMessage }}</p>
     <input type="button" value="Logout" @click="logout" />
   </div>
 </template>
 <script>
+
 import AuthService from '@/services/AuthService.js'
+
 export default {
   data () {
     return {
@@ -18,6 +20,7 @@ export default {
     if (!this.$store.getters.isLoggedIn) {
       this.$router.push('/login')
     }
+
     this.username = this.$store.getters.getUser.username
     this.secretMessage = await AuthService.getSecretContent()
   },

@@ -24,6 +24,7 @@
 import MenyList from '../components/MenyList'
 import NewMenyItem from '../components/AddMenyItem'
 import SlideUpDown from 'vue-slide-up-down'
+import AuthService from '../services/AuthService'
 
 export default {
   components: {
@@ -49,6 +50,9 @@ export default {
         return 'Lägg till ny rätt'
       }
     }
+  },
+  created () {
+    AuthService.redirectIfNotLoggedIn()
   }
 }
 </script>
