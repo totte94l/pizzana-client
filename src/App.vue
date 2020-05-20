@@ -12,10 +12,20 @@
 import Navbar from './components/Navbar.vue'
 import Footer from './components/Footer.vue'
 
+import RestaurantService from './services/RestaurantService'
+
 export default {
   components: {
     Navbar,
     Footer
+  },
+  methods: {
+    async setRestaurantInfo () {
+      RestaurantService.setRestaurantInfo()
+    }
+  },
+  mounted () {
+    this.setRestaurantInfo()
   }
 }
 </script>

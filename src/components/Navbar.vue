@@ -20,7 +20,7 @@
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mr-auto">
-                            <a class="nav-link" href="#"><i class="far fa-user-circle"></i> {{ user.username }}</a>
+                            <span class="nav-link" style="text-decoration: none; cursor: default"><i class="far fa-user-circle"></i> {{ user.username }}</span>
                         </li>
                         <li class="nav-item mr-auto">
                             <span class="nav-link" v-on:click="logout">Logga ut</span>
@@ -31,7 +31,7 @@
                 <template v-else>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mr-auto">
-                            <routerLink to="login" class="nav-link" href="#">Logga in</routerLink>
+                            <routerLink to="login" class="nav-link">Logga in</routerLink>
                         </li>
                         <li class="nav-item mr-auto">
                             <routerLink to="sign-up" class="nav-link">Registrera konto</routerLink>

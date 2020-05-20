@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1 class="mb-2">Din meny</h1>
+        <h1 class="mb-2">Meny | {{ restaurantName }}</h1>
         <div id="menuItems" class="row justify-content-center">
 
           <transition name="fade">
@@ -106,7 +106,8 @@ export default {
       glutenFree: false,
       lactoseFree: false,
       deletedItem: false,
-      alertType: String
+      alertType: String,
+      restaurantName: String
     }
   },
   components: {
@@ -167,6 +168,7 @@ export default {
   },
   mounted: function () {
     this.setMenu()
+    this.restaurantName = store.getters.restaurant.name
   },
   computed: {
     menu () {
@@ -177,7 +179,7 @@ export default {
 
       this.menu.forEach(function (item) {
         const categorie = item.category
-        categoriesList.indexOf(categorie) === -1 ? categoriesList.push(categorie) : console.log("finns redan!")
+        categoriesList.indexOf(categorie) === -1 ? categoriesList.push(categorie) : console.log('finns redan!')
       })
       return categoriesList
     }
