@@ -14,7 +14,7 @@
                             <routerLink to="/meny" class="nav-link">Min meny</routerLink>
                         </li>
                         <li class="nav-item mr-auto">
-                            <a class="nav-link" href="#">Om Oss</a>
+                            <routerLink to="/about" class="nav-link">Om Oss</routerLink>
                         </li>
                     </ul>
 
