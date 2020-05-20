@@ -5,6 +5,7 @@ import Home from '../views/Home.vue'
 import SignUp from '../views/SignUp.vue'
 import Login from '../views/Login.vue'
 import Meny from '../views/Meny.vue'
+import About from '../views/About.vue'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,11 @@ const routes = [
     path: '/meny',
     name: 'meny',
     component: Meny
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: About
   }
 ]
 

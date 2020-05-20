@@ -1,10 +1,5 @@
 <template>
   <div class="container mt-3 mb-3" id="addNewItem">
-      <transition name="fade">
-        <Alert :type="alertType" v-if="addedNewItem">
-          {{ msg }}
-        </Alert>
-      </transition>
       <div class="row">
         <div class="col-12 mt-3">
           <div class="form-group row mb-0">
@@ -42,6 +37,11 @@
                     <button v-on:click="addItem" class="btn btn-success mr-2">Spara</button>
                 </div>
             </div>
+            <transition name="fade" class="">
+              <Alert class="mt-4" :type="alertType" v-if="addedNewItem">
+                {{ msg }}
+              </Alert>
+            </transition>
           </div>
         </div>
       </div>
