@@ -78,7 +78,7 @@ export default new Vuex.Store({
       commit('RESET', '')
     },
     update_restaurant_info: ({ commit, dispatch }, data) => {
-      console.log(data)
+      console.log("Data from store: ", data)
       commit('UPDATE_RESTAURANT_INFO', data)
     }
   }

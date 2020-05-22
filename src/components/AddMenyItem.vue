@@ -74,13 +74,15 @@ export default {
   },
   methods: {
     async addItem () {
+      console.log(store.getters.getUser.id)
       const data = {
         name: this.name,
         ingredients: this.ingredients,
         category: this.category,
         glutenFree: this.glutenFree,
         lactoseFree: this.lactoseFree,
-        price: this.price
+        price: this.price,
+        owner: store.getters.getUser.id
       }
 
       const response = await MenyService.addItem(data)
