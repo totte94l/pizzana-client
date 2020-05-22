@@ -9,7 +9,7 @@
             <input name="inp_username" type="text" class="form-control" v-model="username" />
 
             <label for="inp_password" class="mt-2">Lösenord:</label>
-            <input name="inp_password" type="password" class="form-control" v-model="password" />
+            <input @keyup.enter="login()" name="inp_password" type="password" class="form-control" v-model="password" />
 
             <input type="button" class="btn btn-primary mt-3" @click="login" value="Logga in" />
             <p class="mt-4 alert alert-warning" v-if="msg">{{ msg }}</p>

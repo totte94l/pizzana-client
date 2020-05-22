@@ -8,6 +8,8 @@ import Meny from '../views/Meny.vue'
 import About from '../views/About.vue'
 import Account from '../views/Account.vue'
 
+import Restaurantview from '../views/RestaurantView.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -40,6 +42,11 @@ const routes = [
     path: '/account',
     name: 'account',
     component: Account
+  },
+  {
+    path: '/restaurang/:name',
+    name: 'Restaurantview',
+    component: Restaurantview
   }
 ]
 
