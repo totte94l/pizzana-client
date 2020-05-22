@@ -115,7 +115,11 @@ export default {
   },
   methods: {
     async setMenu () {
-      MenyService.SetMenu()
+      const data = {
+        id: store.getters.getUser.id
+      }
+
+      MenyService.SetMenu(data)
     },
     async deleteItem (id) {
       const data = {

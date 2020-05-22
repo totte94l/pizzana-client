@@ -4,11 +4,11 @@ import store from '../store/index'
 const url = 'http://localhost:3000/api/'
 
 export default {
-  setRestaurantInfo () {
+  setRestaurantInfo (data) {
     return axios
-      .get(url + 'restaurant-info')
+      .post(url + 'restaurant-info', data)
       .then(function (response) {
-        console.log(response.data.info)
+        console.log("hejSAN", response.data.info)
         store.dispatch('update_restaurant_info', response.data.info)
       })
   },

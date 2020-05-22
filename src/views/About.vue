@@ -91,7 +91,11 @@ export default {
       this.msg = response.msg
     },
     async setRestaurantInfo () {
-      RestaurantService.setRestaurantInfo()
+      const data = {
+        id: store.getters.getUser.id
+      }
+
+      RestaurantService.setRestaurantInfo(data)
     },
     updateLocalData () {
 
