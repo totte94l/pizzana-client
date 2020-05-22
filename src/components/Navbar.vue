@@ -20,7 +20,7 @@
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mr-auto">
-                            <span class="nav-link" style="text-decoration: none; cursor: default"><i class="far fa-user-circle"></i> {{ user.username }}</span>
+                            <routerLink class="nav-link" to="account"><i class="far fa-user-circle"></i> {{ user.username }}</routerLink>
                         </li>
                         <li class="nav-item mr-auto">
                             <span class="nav-link" v-on:click="logout">Logga ut</span>

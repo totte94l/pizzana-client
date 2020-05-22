@@ -20,10 +20,14 @@ export default {
   },
   redirectIfNotLoggedIn () {
     if (store.getters.isLoggedIn) {
-      console.log("user loggedin")
       return 'User is logged in'
     } else {
       router.push('/login')
     }
+  },
+  changePassword (data) {
+    return axios
+      .put(url + 'change-password/', data)
+      .then(response => response)
   }
 }
