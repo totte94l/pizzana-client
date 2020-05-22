@@ -80,7 +80,8 @@ export default {
         description: this.description,
         address: this.address,
         openHours: this.openHours,
-        phone: this.phone
+        phone: this.phone,
+        owner: store.getters.getUser.id
       }
 
       const response = await RestaurantService.editRestaurant(data)
@@ -112,17 +113,22 @@ export default {
   beforeMount () {
     this.setRestaurantInfo()
   },
-  mounted: function () {
-    this.name = this.restaurant.name
-    this.description = this.restaurant.description
-    this.address = this.restaurant.address
-    this.openHours = this.restaurant.open_hours
-    this.phone = this.restaurant.phone
-  },
   computed: {
     restaurant () {
       return store.getters.restaurant
     }
+  },
+  watch: { // watch changes here
+    restaurant: function (newValue, oldValue) {
+      this.name = this.restaurant.name
+      this.description = this.restaurant.description
+      this.address = this.restaurant.address
+      this.openHours = this.restaurant.open_hours
+      this.phone = this.restaurant.phone
+    }
+  },
+  mounted: function () {
+
   }
 }
 </script>
