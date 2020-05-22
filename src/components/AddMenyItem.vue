@@ -37,9 +37,13 @@
                     <button v-on:click="addItem" class="btn btn-success mr-2">Spara</button>
                 </div>
             </div>
+            <transition name="fade" class="">
+              <Alert class="mt-4" :type="alertType" v-if="addedNewItem">
+                {{ msg }}
+              </Alert>
+            </transition>
           </div>
         </div>
-        {{ msg }}
       </div>
   </div>
 </template>
@@ -47,6 +51,7 @@
 <script>
 import MenyService from '../services/MenyService'
 import store from '../store/index'
+import Alert from '../components/Alert'
 
 export default {
   name: 'AddMenyItem',
@@ -59,23 +64,45 @@ export default {
       lactoseFree: false,
       msg: '',
       menu: '',
-      category: ''
+      category: '',
+      addedNewItem: false,
+      alertType: String
     }
+  },
+  components: {
+    Alert
   },
   methods: {
     async addItem () {
+      console.log(store.getters.getUser.id)
       const data = {
         name: this.name,
         ingredients: this.ingredients,
         category: this.category,
         glutenFree: this.glutenFree,
         lactoseFree: this.lactoseFree,
-        price: this.price
+        price: this.price,
+        owner: store.getters.getUser.id
       }
 
       const response = await MenyService.addItem(data)
 
+      if (response.success === 'true') {
+        this.alertType = 'success'
+      } else {
+        this.alertType = 'danger'
+      }
+      this.showAlert()
+
       this.msg = response.msg
+    },
+    showAlert () {
+      this.addedNewItem = true
+      const vm = this
+
+      setTimeout(function () {
+        vm.addedNewItem = false
+      }, 4000)
     }
   }
 }
@@ -85,6 +112,13 @@ export default {
   #addNewItem {
     border: 1px solid rgba(75, 75, 75, 0.322);
     padding: 20px;
-    border-radius: 10px;;
+    border-radius: 10px;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 1s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
   }
 </style>

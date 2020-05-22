@@ -1,17 +1,29 @@
-// src/views/SignUp.vue
-
 <template>
-	<div class="container">
-		<h1>Sign Up</h1>
-		<input type="text" placeholder="Username" v-model="username" />
-		<input type="text" placeholder="Password" v-model="password" />
-		<input type="text" placeholder="Password (repeat)" v-model="password_repeat"/>
-        <hr >
-        <input type="text" placeholder="Restaurangnamn" id="">
-		<input type="button" @click="signUp" value="Sign Up" />
-		<p v-if="msg">{{ msg }}</p>
-	</div>
+  <div>
+    <div class="container mt-5">
+      <div class="row w-100 justify-content-center">
+        <div class="col-6 ">
+          <div id="login_form" class="form-group">
+
+            <label for="inp_username">Användarnamn:</label>
+            <input name="inp_username" type="text" class="form-control" v-model="username" />
+
+            <label for="inp_password" class="mt-2">Lösenord:</label>
+            <input name="inp_password" type="password" class="form-control" v-model="password" />
+
+            <label for="inp_password" class="mt-2">Repetera lösenord:</label>
+            <input type="password" name="inp_password_repeat" class="form-control mb-3" placeholder="" v-model="password_repeat"/>
+
+            <input type="button" @click="signUp" class="btn btn-primary" value="Registrera konto" />
+
+            <p class="mt-4 alert alert-warning" v-if="msg">{{ msg }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
+
 <script>
 
 import AuthService from '@/services/AuthService.js'

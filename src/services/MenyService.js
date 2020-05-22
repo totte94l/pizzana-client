@@ -4,9 +4,9 @@ import store from '../store/index'
 const url = 'http://localhost:3000/api/'
 
 export default {
-  SetMenu () {
+  SetMenu (data) {
     return axios
-      .get(url + 'menu-items')
+      .post(url + 'menu-items', data)
       .then(function (response) {
         store.dispatch('set_menu', response.data.menu)
       })
@@ -16,7 +16,12 @@ export default {
     return axios
       .put(url + 'edit-item/', data)
       .then(function (response) {
-        vm.SetMenu()
+
+        const id = {
+          id: store.getters.getUser.id
+        }
+
+        vm.SetMenu(id)
         return response.data
       })
   },
@@ -25,7 +30,12 @@ export default {
     return axios
       .delete(url + 'delete-item/', { data: { data } })
       .then(function (response) {
-        vm.SetMenu()
+
+        const id = {
+          id: store.getters.getUser.id
+        }
+
+        vm.SetMenu(id)
         return response.data
       })
   },
@@ -34,7 +44,11 @@ export default {
     return axios
       .post(url + 'add-item', { data: { data } })
       .then(function (response) {
-        vm.SetMenu()
+        const id = {
+          id: store.getters.getUser.id
+        }
+
+        vm.SetMenu(id)
         return response.data
       })
   }

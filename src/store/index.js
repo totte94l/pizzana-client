@@ -10,7 +10,8 @@ const getDefaultState = () => {
   return {
     token: '',
     user: {},
-    menu: []
+    menu: [],
+    restaurant: {}
   }
 }
 
@@ -27,6 +28,9 @@ export default new Vuex.Store({
     },
     menu: state => {
       return state.menu
+    },
+    restaurant: state => {
+      return state.restaurant
     }
   },
   mutations: {
@@ -51,6 +55,9 @@ export default new Vuex.Store({
           arrItem.price = item.price
         }
       })
+    },
+    UPDATE_RESTAURANT_INFO: (state, data) => {
+      state.restaurant = data[0]
     }
   },
   actions: {
@@ -69,6 +76,10 @@ export default new Vuex.Store({
     },
     logout: ({ commit }) => {
       commit('RESET', '')
+    },
+    update_restaurant_info: ({ commit, dispatch }, data) => {
+      console.log("Data from store: ", data)
+      commit('UPDATE_RESTAURANT_INFO', data)
     }
   }
 })

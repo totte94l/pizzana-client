@@ -14,13 +14,13 @@
                             <routerLink to="/meny" class="nav-link">Min meny</routerLink>
                         </li>
                         <li class="nav-item mr-auto">
-                            <a class="nav-link" href="#">Om Oss</a>
+                            <routerLink to="/about" class="nav-link">Om Oss</routerLink>
                         </li>
                     </ul>
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mr-auto">
-                            <a class="nav-link" href="#"><i class="far fa-user-circle"></i> {{ user.username }}</a>
+                            <routerLink class="nav-link" to="account"><i class="far fa-user-circle"></i> {{ user.username }}</routerLink>
                         </li>
                         <li class="nav-item mr-auto">
                             <span class="nav-link" v-on:click="logout">Logga ut</span>
@@ -31,7 +31,7 @@
                 <template v-else>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mr-auto">
-                            <routerLink to="login" class="nav-link" href="#">Logga in</routerLink>
+                            <routerLink to="login" class="nav-link">Logga in</routerLink>
                         </li>
                         <li class="nav-item mr-auto">
                             <routerLink to="sign-up" class="nav-link">Registrera konto</routerLink>
