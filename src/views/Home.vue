@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <h1>Hello {{ username }}</h1>
+    <h1>Inloggad som {{ username }}</h1>
     <p>{{ secretMessage }}</p>
-    <input type="button" value="Logout" @click="logout" />
+    <input type="button" value="Logga ut" @click="logout" />
   </div>
 </template>
 <script>

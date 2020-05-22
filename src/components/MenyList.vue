@@ -19,7 +19,7 @@
                 <template v-if="editingItem && item.id == editingItemId">
                     <div class="form-group row mb-0">
                         <div class="col-1">
-                            <h1 class="">{{ index }}.</h1>
+                            <h1 class="">{{ index + 1 }}.</h1>
                         </div>
                         <div class="col-9">
                             <input type="text" class="form-control" v-model="editName">
