@@ -6,21 +6,25 @@
         <div class="container" style="z-index: 500">
             <div class="container-fluid text-center text-md-left" style="z-index: 50">
                 <div class="row align-items-center">
-                    <div class="col-md-1 mt-md-0 mt-3 align-items-center">
+
+                    <div class="col-md-2 mt-md-0 mt-3 align-items-center">
                         <img class="logotype" src="../assets/logotype.png" alt="">
                     </div>
 
                     <hr class="clearfix w-100 d-md-none pb-3">
 
-                    <div class="col-md-11 mb-md-0 mb-3">
-                        <p class="text-center">
-                            Pizzana - Christoffer Cajanders Examensarbete | EC Frontend-utvecklare 2018
+                    <div class="col-md-10 mb-md-0 mb-3">
+                        <h1>
+                            Pizzana
+                        </h1>
+                        <p>
+                            Christoffer Cajanders Examensarbete | EC Frontend-utvecklare 2018
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="footer-copyright text-center py-3" style="z-index: 500">© 2020 Copyright:
+            <div class="footer-copyright text-center" style="z-index: 500">© 2020 Copyright:
                 <a href="#"> Christoffer Cajander</a>
             </div>
         </div>

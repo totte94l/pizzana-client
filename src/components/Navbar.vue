@@ -31,10 +31,10 @@
                 <template v-else>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mr-auto">
-                            <routerLink to="login" class="nav-link">Logga in</routerLink>
+                            <routerLink to="/login" class="nav-link">Logga in</routerLink>
                         </li>
                         <li class="nav-item mr-auto">
-                            <routerLink to="sign-up" class="nav-link">Registrera konto</routerLink>
+                            <routerLink to="/sign-up" class="nav-link">Registrera konto</routerLink>
                         </li>
                     </ul>
                 </template>

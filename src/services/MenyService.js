@@ -16,7 +16,6 @@ export default {
     return axios
       .put(url + 'edit-item/', data)
       .then(function (response) {
-
         const id = {
           id: store.getters.getUser.id
         }
@@ -30,7 +29,6 @@ export default {
     return axios
       .delete(url + 'delete-item/', { data: { data } })
       .then(function (response) {
-
         const id = {
           id: store.getters.getUser.id
         }
