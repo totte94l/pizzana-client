@@ -13,7 +13,7 @@
       <div class="form-group">
         <label for="inp_rDesc">Restaurangens beskrivning:</label>
         <textarea id="inp_rDesc" v-model="description" class="form-control" rows="4"></textarea>
-        <small id="emailHelp" class="form-text text-muted">En kortare text som beskriver restaurangen.</small>
+        <small id="emailHelp" class="form-text">En kortare text som beskriver restaurangen.</small>
       </div>
 
       <!-- Restaurant Address -->
@@ -32,16 +32,16 @@
       <div class="form-group">
         <label for="inp_rName">Telefonnummer:</label>
         <input type="tel" v-model="phone" class="form-control" id="inp_phone">
-        <small id="emailHelp" class="form-text text-muted">Telefonnummer till restaurangen. Hit kan kunder ringa för att kontakta er.</small>
+        <small id="emailHelp" class="form-text">Telefonnummer till restaurangen. Hit kan kunder ringa för att kontakta er.</small>
       </div>
 
       <div class="row">
         <div class="col-md-1">
-          <button v-on:click="editRestaurant" class="btn btn-primary mb-5">Spara</button>
+          <button v-on:click="editRestaurant" class="btn btn-primary">Spara</button>
         </div>
         <div class="col-md-11">
           <transition name="fade">
-            <Alert type="success" v-if="didUpdate" class="mb-4">
+            <Alert type="success" v-if="didUpdate">
               {{ msg }}
             </Alert>
           </transition>

@@ -3,20 +3,17 @@
     <div class="wrapper">
       <Navbar />
       <router-view/>
-      <Footer />
     </div>
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue'
-import Footer from './components/Footer.vue'
-
+// import Footer from './components/Footer.vue'
 
 export default {
   components: {
-    Navbar,
-    Footer
+    Navbar
   }
 }
 </script>
@@ -31,6 +28,23 @@ export default {
   padding:0;
   height:100%;
   font-family: 'Raleway', sans-serif;
+  background: rgb(255,74,74);
+  background: -moz-linear-gradient(180deg, rgba(255,74,74,1) 0%, rgba(255,61,61,1) 100%);
+  background: -webkit-linear-gradient(180deg, rgba(255,74,74,1) 0%, rgba(255,61,61,1) 100%);
+  background: linear-gradient(180deg, rgba(255,74,74,1) 0%, rgba(255,61,61,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff4a4a",endColorstr="#ff3d3d",GradientType=1);
+}
+
+h1, h2, span, p, label, small, td {
+  color: white;
+}
+
+a {
+  color: #72d9ea;
+}
+
+a:hover {
+  color: #8edbe9;
 }
 
 .wrapper {
@@ -40,7 +54,7 @@ export default {
 }
 
 .footer {
-  position: absolute; /* This is a footer that is contained by a positioned main container */
+  position: absolute;
   bottom: 0;
   width: 100%;
   height: 180px; /* .push must be the same height as .footer */
@@ -60,6 +74,6 @@ export default {
   }
 
   .logotype {
-      width: 100px;
+    width: 100px;
   }
 </style>
