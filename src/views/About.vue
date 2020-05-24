@@ -36,12 +36,12 @@
       </div>
 
       <div class="row">
-        <div class="col-md-1">
+        <div class="col-md-12">
           <button v-on:click="editRestaurant" class="btn btn-primary">Spara</button>
         </div>
-        <div class="col-md-11">
+        <div class="col-md-12">
           <transition name="fade">
-            <Alert type="success" v-if="didUpdate">
+            <Alert type="success" class="mt-4" v-if="didUpdate">
               {{ msg }}
             </Alert>
           </transition>

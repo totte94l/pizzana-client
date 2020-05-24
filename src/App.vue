@@ -19,6 +19,10 @@ export default {
 </script>
 
 <style lang="scss">
+
+body, html {
+  background-color: rgba(255,61,61,1)
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -28,7 +32,7 @@ export default {
   padding:0;
   height:100%;
   font-family: 'Raleway', sans-serif;
-  background: rgb(255,74,74);
+    background: rgb(255,74,74);
   background: -moz-linear-gradient(180deg, rgba(255,74,74,1) 0%, rgba(255,61,61,1) 100%);
   background: -webkit-linear-gradient(180deg, rgba(255,74,74,1) 0%, rgba(255,61,61,1) 100%);
   background: linear-gradient(180deg, rgba(255,74,74,1) 0%, rgba(255,61,61,1) 100%);
@@ -48,9 +52,7 @@ a:hover {
 }
 
 .wrapper {
-    position:relative; /* this makes the main the nearest positioned ancestor to the AP footer. */
-    padding-bottom: 160px; /* protects the content from the overlapping footer. */
-    min-height: 100vh; /* it will overflow the body when more content fills up. So the scrollbar is the normal on the root element.  */
+  height: auto;
 }
 
 .footer {
