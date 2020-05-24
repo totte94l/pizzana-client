@@ -44,7 +44,7 @@ const routes = [
     component: Account
   },
   {
-    path: '/restaurang/:name',
+    path: '/:name',
     name: 'Restaurantview',
     component: Restaurantview
   }

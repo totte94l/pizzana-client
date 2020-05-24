@@ -14,6 +14,14 @@
             <label for="inp_password" class="mt-2">Repetera lösenord:</label>
             <input type="password" name="inp_password_repeat" class="form-control mb-3" placeholder="" v-model="password_repeat"/>
 
+            <label class="mt-5" for="routeName">Webbadress:</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">pizzana.se/</span>
+              </div>
+              <input type="text" name="routeName" v-model="routeName" class="form-control" placeholder="restaurangnamn" aria-label="restaurangnamn" aria-describedby="basic-addon1">
+            </div>
+
             <input type="button" @click="signUp" class="btn btn-primary" value="Registrera konto" />
 
             <p class="mt-4 alert alert-warning" v-if="msg">{{ msg }}</p>
@@ -34,21 +42,33 @@ export default {
       username: '',
       password: '',
       password_repeat: '',
-      msg: ''
+      routeName: '',
+      msg: '',
+      localMsg: []
     }
   },
   methods: {
     async signUp () {
-      try {
-        const credentials = {
-          username: this.username,
-          password: this.password,
-          password_repeat: this.password_repeat
+      const credentials = {
+        username: this.username,
+        password: this.password,
+        password_repeat: this.password_repeat,
+        routeName: this.routeName
+      }
+
+      if (credentials.routeName === '') {
+        this.msg = 'Du måste ange en webbadress'
+      } else if (credentials.routeName.length > 20) {
+        this.msg = 'Webbadressen får inte vara längre än 20 tecken.'
+      } else if (credentials.username === '' || credentials.password === '' || credentials.password_repeat === '') {
+        this.msg = 'Inget fält får vara tomt.'
+      } else {
+        try {
+          const response = await AuthService.signUp(credentials)
+          this.msg = response.msg
+        } catch (error) {
+          this.msg = error.response.data.msg
         }
-        const response = await AuthService.signUp(credentials)
-        this.msg = response.msg
-      } catch (error) {
-        this.msg = error.response.data.msg
       }
     }
   }
