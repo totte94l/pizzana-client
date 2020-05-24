@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-lg sticky-top navbar-light mb-3">
         <div class="container">
-            <a class="navbar-brand" href="#"><img class="logotype logotypeNav" src="../assets/logotype.png"></a>
+            <router-link :to="{ name: 'home' }" class="navbar-brand"><img class="logotype logotypeNav" src="../assets/logotype.png"></router-link>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -77,6 +77,8 @@ export default {
         background-color: #ff4a4a;
         background-image: url('../assets/icons_01.png');
         background-size: contain;
+
+        box-shadow: 0 8px 8px rgba(0, 0, 2, 0.2);
     }
 
     .nav-link {

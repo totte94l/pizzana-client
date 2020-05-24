@@ -211,8 +211,10 @@ export default {
 
     .menu-item {
       /* border: 1px solid rgba(255, 255, 255, 0.877); */
-      border-bottom: 1px solid white;
+      /* border-bottom: 1px solid white; */
+      background: rgb(232, 66, 66);
       padding: 20px;
+      box-shadow: 0 8px 8px rgba(0, 0, 2, 0.2);
     }
 
     .secondary_color {

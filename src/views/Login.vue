@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <div class="container mt-5">
+    <div class="container">
       <div class="row w-100 justify-content-center">
         <div class="col-6 ">
           <div id="login_form" class="form-group">
@@ -18,7 +17,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>

@@ -1,11 +1,13 @@
 <template>
   <div>
-    <div class="container mt-5">
+    <div class="container mt-5" style="overflow: hidden">
+    <img style="position: absolute; right: 0; bottom: 0" src="../assets/bg_flow.png" class="" alt="">
       <div class="row w-100 justify-content-center">
         <div class="col-6 ">
           <div id="login_form" class="form-group">
-
-            <label for="inp_username">Användarnamn:</label>
+            <h1>Skapa ett konto för att börja bygga din sida.</h1>
+            <h2>- Det är både snabbt & enkelt!</h2>
+            <label class="mt-3" for="inp_username">Användarnamn:</label>
             <input name="inp_username" type="text" class="form-control" v-model="username" />
 
             <label for="inp_password" class="mt-2">Lösenord:</label>
