@@ -98,9 +98,6 @@ export default {
 
       RestaurantService.setRestaurantInfo(data)
     },
-    updateLocalData () {
-
-    },
     showAlert () {
       this.didUpdate = true
       const vm = this
