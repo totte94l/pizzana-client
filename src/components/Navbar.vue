@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-lg sticky-top navbar-light mb-3">
         <div class="container">
-            <a class="navbar-brand" href="#"><img class="logotype" src="../assets/logotype.png"></a>
+            <a class="navbar-brand" href="#"><img class="logotype logotypeNav" src="../assets/logotype.png"></a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -74,7 +74,9 @@ export default {
 
 <style scoped>
     .navbar {
-        background: #420059;;
+        background-color: #ff4a4a;
+        background-image: url('../assets/icons_01.png');
+        background-size: contain;
     }
 
     .nav-link {

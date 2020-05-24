@@ -52,7 +52,7 @@
                         <div class="row align-self-center">
                             <div class="col-12">
                                 <button v-on:click="editItem(item)" class="btn btn-success mr-2">Spara</button>
-                                <button v-on:click="cancelEdit" class="btn btn-danger mr-2">Avbryt</button>
+                                <button v-on:click="cancelEdit" class="btn btn-dark mr-2">Avbryt</button>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
 
                 <!-- Regular menu item view -->
                 <template v-else>
-                    <h1><span>{{ index + 1 }}. </span>{{ item.name }}<span class="float-right secondary_color">{{ item.price }}kr</span></h1>
+                    <h1><span>{{ index + 1 }}. </span>{{ item.name }}<span class="float-right">{{ item.price }}kr</span></h1>
 
                     <div v-if="item.glutenFree || item.lactoseFree " class="mt-3 mb-3 icon_holder">
                       <div v-if="item.glutenFree " class="mt-3 mb-3">
@@ -82,7 +82,7 @@
                       <div class="row align-self-center">
                           <div class="col-12">
                               <button class="btn btn-primary mr-2" v-on:click="startEdit(item)">Ändra</button>
-                              <button class="btn btn-danger" v-on:click="deleteItem(item.id)">Ta bort</button>
+                              <button class="btn btn-dark" v-on:click="deleteItem(item.id)">Ta bort</button>
                           </div>
                       </div>
                     </div>
@@ -206,12 +206,13 @@ export default {
 
 <style scoped>
     #menuItems {
-        padding: 10px;
+      padding: 10px;
     }
 
     .menu-item {
-        border: 1px solid rgba(94, 94, 94, 0.158);
-        padding: 20px;
+      /* border: 1px solid rgba(255, 255, 255, 0.877); */
+      border-bottom: 1px solid white;
+      padding: 20px;
     }
 
     .secondary_color {
@@ -219,7 +220,6 @@ export default {
     }
 
     .cat-title {
-      color: #444;
       border-bottom: 4px solid orange;
     }
 
