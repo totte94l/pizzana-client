@@ -58,6 +58,8 @@ import RestaurantService from '../services/RestaurantService'
 import store from '../store/index'
 import Alert from '../components/Alert'
 
+import AuthService from '../services/AuthService'
+
 export default {
   data () {
     return {
@@ -124,8 +126,8 @@ export default {
       this.phone = this.restaurant.phone
     }
   },
-  mounted: function () {
-
+  created () {
+    AuthService.redirectIfNotLoggedIn()
   }
 }
 </script>

@@ -1,6 +1,11 @@
 <template>
     <div class="container">
-        <h1 class="mb-2">Meny | {{ restaurantName }}</h1>
+
+        <h1 class="mb-2">
+          Meny
+          <span v-if="restaurantName"> | {{ restaurantName }}</span>
+        </h1>
+
         <div id="menuItems" class="row justify-content-center">
 
           <transition name="fade">
@@ -107,7 +112,7 @@ export default {
       lactoseFree: false,
       deletedItem: false,
       alertType: String,
-      restaurantName: String
+      restaurantName: ''
     }
   },
   components: {
@@ -186,6 +191,14 @@ export default {
         categoriesList.indexOf(categorie) === -1 ? categoriesList.push(categorie) : console.log('finns redan!')
       })
       return categoriesList
+    },
+    getRestaurantName () {
+      return store.getters.restaurant.name
+    }
+  },
+  watch: {
+    getRestaurantName: function (newValue, oldValue) {
+      this.restaurantName = newValue
     }
   }
 }

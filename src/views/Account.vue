@@ -9,7 +9,7 @@
                 </tr>
                 <tr>
                     <td>Webbadress</td>
-                    <td><router-link :to="restaurant.route_name">http://localhost:8080/{{ restaurant.route_name }}</router-link></td>
+                    <td><router-link :to="restaurant.route_name" target="_blank">http://localhost:8080/{{ restaurant.route_name }}</router-link></td>
                     <td></td>
                 </tr>
                 <tr>
@@ -105,6 +105,9 @@ export default {
       return `<routerLink class='nav-link' to='/${address}'>http://localhost:8080/${address}</routerLink>` */
       return store.getters.restaurant
     }
+  },
+  created () {
+    AuthService.redirectIfNotLoggedIn()
   }
 }
 </script>
