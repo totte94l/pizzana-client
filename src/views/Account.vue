@@ -8,6 +8,11 @@
                     <td></td>
                 </tr>
                 <tr>
+                    <td>Webbadress</td>
+                    <td><router-link :to="restaurant.route_name">http://localhost:8080/{{ restaurant.route_name }}</router-link></td>
+                    <td></td>
+                </tr>
+                <tr>
                     <td>Lösenord</td>
                     <td>*********</td>
                     <td><button v-on:click="toggleIsChangingPassword" class="btn btn-success ml-2">Ändra</button></td>
@@ -94,6 +99,11 @@ export default {
     user () {
       console.log(store.getters.getUser)
       return store.getters.getUser
+    },
+    restaurant () {
+      /* const address = store.getters.restaurant.route_name
+      return `<routerLink class='nav-link' to='/${address}'>http://localhost:8080/${address}</routerLink>` */
+      return store.getters.restaurant
     }
   }
 }
