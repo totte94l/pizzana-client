@@ -51,7 +51,8 @@ export default {
       }
     }
   },
-  created () {
+  mounted () {
+    console.log("mounted")
     AuthService.redirectIfNotLoggedIn()
   }
 }

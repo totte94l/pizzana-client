@@ -2,13 +2,18 @@ import axios from 'axios'
 import store from '../store/index'
 import router from '../router/index'
 
+import RestaurantService from './RestaurantService'
+
 const url = 'http://localhost:3000/api/'
 
 export default {
   login (credentials) {
     return axios
       .post(url + 'login/', credentials)
-      .then(response => response.data)
+      .then(function (response) {
+        RestaurantService.setRestaurantInfo(response.data.user)
+        return response.data
+      })
   },
   signUp (credentials) {
     return axios
