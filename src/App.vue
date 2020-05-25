@@ -1,10 +1,8 @@
 <template>
   <div id="app">
-    <div class="wrapper">
       <Navbar />
       <router-view/>
     </div>
-  </div>
 </template>
 
 <script>
@@ -23,16 +21,18 @@ export default {
 body, html {
   background-color: rgba(255,61,61,1)
 }
+
 #app {
+  height: 100vh;
+
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin:0;
   padding:0;
-  height:100%;
   font-family: 'Raleway', sans-serif;
-    background: rgb(255,74,74);
+  background: rgb(255,74,74);
   background: -moz-linear-gradient(180deg, rgba(255,74,74,1) 0%, rgba(255,61,61,1) 100%);
   background: -webkit-linear-gradient(180deg, rgba(255,74,74,1) 0%, rgba(255,61,61,1) 100%);
   background: linear-gradient(180deg, rgba(255,74,74,1) 0%, rgba(255,61,61,1) 100%);

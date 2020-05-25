@@ -204,7 +204,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
     #menuItems {
       padding: 10px;
     }
