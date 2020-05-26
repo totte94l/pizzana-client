@@ -12,7 +12,8 @@ const getDefaultState = () => {
     user: {},
     menu: [],
     publicMenu: [],
-    restaurant: {}
+    restaurant: {},
+    publicRestaurant: []
   }
 }
 
@@ -35,6 +36,9 @@ export default new Vuex.Store({
     },
     publicMenu: state => {
       return state.publicMenu
+    },
+    publicRestaurant: state => {
+      return state.publicRestaurant
     }
   },
   mutations: {
@@ -65,6 +69,10 @@ export default new Vuex.Store({
     },
     UPDATE_RESTAURANT_INFO: (state, data) => {
       state.restaurant = data[0]
+    },
+    SET_PUBLIC_RESTAURANT: (state, data) => {
+      console.log(data)
+      state.publicRestaurant = data[0]
     }
   },
   actions: {
@@ -90,6 +98,9 @@ export default new Vuex.Store({
     update_restaurant_info: ({ commit, dispatch }, data) => {
       console.log("Data from store: ", data)
       commit('UPDATE_RESTAURANT_INFO', data)
+    },
+    set_public_restaurant: ({ commit, dispatch}, data) => {
+      commit('SET_PUBLIC_RESTAURANT', data)
     }
   }
 })

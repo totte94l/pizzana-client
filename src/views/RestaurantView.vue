@@ -51,12 +51,23 @@ export default {
 
       return response
     },
+    async getRestaurant () {
+      const data = {
+        id: this.menu.owner
+      }
+      const response = await PublicService.GetRestaurant(data)
+      console.log("rest:", response);
+      this.msg = response.data.msg
+
+      return response
+    },
     log () {
       console.log(this.menu)
     }
   },
   mounted: function () {
     this.getMenu()
+    this.getRestaurant()
   },
   computed: {
     menu () {
