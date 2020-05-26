@@ -39,7 +39,7 @@ body, html {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff4a4a",endColorstr="#ff3d3d",GradientType=1);
 }
 
-h1, h2, span, p, label, small, td {
+h1, h2, h3, h4, span, p, label, small, td {
   color: white;
 }
 

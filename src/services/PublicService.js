@@ -11,5 +11,14 @@ export default {
         store.dispatch('set_public_menu', response.data.menu)
         return response
       })
+  },
+  GetRestaurant (data) {
+    return axios
+      .post(url + 'restaurant-info/', data)
+      .then(function (response) {
+        console.log("Public SErvice", response)
+        store.dispatch('set_public_restaurant', response.data.info)
+        return response
+      })
   }
 }
