@@ -6,7 +6,7 @@
         <div class="col-6 ">
           <div id="login_form" class="form-group">
             <h1>Skapa ett konto för att börja bygga din sida.</h1>
-            <h3>- Det är både snabbt & enkelt!</h3>
+            <h3 class="font-italic">- Det är både snabbt & enkelt!</h3>
             <label class="mt-3" for="inp_username">Användarnamn:</label>
             <input name="inp_username" type="text" class="form-control" v-model="username" />
 
