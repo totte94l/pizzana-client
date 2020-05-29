@@ -1,5 +1,25 @@
 <template>
   <div class="container">
+    <div class="row justify-items-center">
+      <div class="col-12 menu-item mt-3">
+        <h1 class="font-weight-bold">{{ restaurant.name }}</h1>
+        <p>{{ restaurant.description }}</p>
+        <div class="rest_about_container">
+          <div id="rest_address">
+            <div class="secondaryColor font-weight-bold"><i class="fas fa-map-marker-alt"></i> Adress: </div>
+            <textarea rows="2" class="areaTextFix italic">{{ restaurant.address }}</textarea>
+          </div>
+          <div id="orest_open_hours">
+            <div class="secondaryColor font-weight-bold"><i class="far fa-clock"></i> Öppettider:</div>
+            <textarea rows="4" class="areaTextFix italic">{{ restaurant.open_hours }}</textarea>
+          </div>
+          <div id="orest_open_hours">
+            <div class="secondaryColor font-weight-bold"><i class="fas fa-phone-alt"></i> Telefonnummer:</div>
+            <span class="font-italic">{{ restaurant.phone }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
     <div id="menuItems" class="row justify-content-center">
       <div class="mb-3 col-12" v-for="(cat, index) in categories" :key="index">
          <h1 class="mt-2 mb-4 cat-title">{{ cat }}</h1>
@@ -35,7 +55,7 @@ import PublicService from '../services/PublicService'
 import store from '../store/index'
 
 export default {
-  data() {
+  data () {
     return {
       msg: ''
     }
@@ -46,23 +66,19 @@ export default {
         routeName: this.$route.params.name
       }
       const response = await PublicService.GetMenu(data)
-      console.log(response);
+      console.log(response)
       this.msg = response.data.msg
 
       return response
     },
     async getRestaurant () {
       const data = {
-        id: this.menu.owner
+        routeName: this.$route.params.name
       }
       const response = await PublicService.GetRestaurant(data)
-      console.log("rest:", response);
       this.msg = response.data.msg
 
       return response
-    },
-    log () {
-      console.log(this.menu)
     }
   },
   mounted: function () {
@@ -81,11 +97,33 @@ export default {
         categoriesList.indexOf(categorie) === -1 ? categoriesList.push(categorie) : console.log('finns redan!')
       })
       return categoriesList
+    },
+    restaurant () {
+      return store.getters.publicRestaurant
     }
   }
 }
 </script>
 
 <style>
+  #restaurantInfo {
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.397);
+  }
 
+  .rest_about_container {
+
+  }
+
+  .areaTextFix {
+    border: none;
+    background: none;
+    color: white;
+    outline: none;
+    resize: none;
+  }
+
+  .secondaryColor {
+    color: white
+  }
 </style>

@@ -14,7 +14,7 @@ export default {
   },
   GetRestaurant (data) {
     return axios
-      .post(url + 'restaurant-info/', data)
+      .post(url + 'public-restaurant', data)
       .then(function (response) {
         console.log("Public SErvice", response)
         store.dispatch('set_public_restaurant', response.data.info)
